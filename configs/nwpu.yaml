@@ -1,0 +1,38 @@
+# NWPU-Crowd -- largest benchmark, widest density range
+# paper result: MAE 46.23 / MSE 132.58 (best among the compared methods)
+
+model:
+  variant: base
+  output_stride: 8
+  fusion_channels: 96
+  head_channels: 256
+  aspp_rates: [6, 12, 18, 24]
+  can_scales: [1, 2, 3, 6]
+  reduction: 16
+  drop_path_rate: 0.1
+
+data:
+  root: data/nwpu
+  crop_size: 512
+  max_size: 2048
+  sigma: 0.0
+  val_split: val
+
+loss:
+  mae_weight: 1.0
+  ot_weight: 0.1
+  mse_weight: 0.0
+  ot_eps: 0.05
+  ot_iter: 100
+  ot_downsample: 2
+
+train:
+  epochs: 500
+  batch_size: 16
+  lr: 0.0001
+  weight_decay: 0.0001
+  warmup_epochs: 10
+  clip_grad: 1.0
+  num_workers: 8
+  val_every: 5
+  save_dir: runs/nwpu

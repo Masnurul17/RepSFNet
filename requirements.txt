@@ -1,0 +1,8 @@
+torch>=1.13
+torchvision>=0.14
+numpy>=1.21
+Pillow>=9.0
+PyYAML>=6.0
+scipy>=1.7          # .mat annotations + optional Gaussian density maps
+thop>=0.1.1         # MACs reporting in tools/benchmark_latency.py
+tqdm>=4.64
